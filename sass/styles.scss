@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,800);
+
+// 300, 400, 600, 700, 800
+$light: 300;
+$normal: 400;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;
+$main-color: #1192d3;
+$font-color: rgba(255,255,255,1);
+$font-secondary-color: rgba(255,255,255,.7);
+$font-base: 14px;
+
+body{
+//  margin:50px; 
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $bold;
+  background-color:$main-color;
+  color: $font-color;
+  font-size: $font-base;
+}
+
+.information{
+  line-height: 1.3em;
+  position:absolute;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+  font-size: 2.5em;
+}
+
+.text{
+  display: block;
+}
+
+.location{
+  color: $font-secondary-color;
+}
+
+.weather-icon{
+  transition: all 2s linear;
+  filter: invert(100%) blur(5px);
+}
