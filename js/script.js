@@ -1,42 +1,40 @@
-// get curent location
-if ("geolocation" in navigator) {
-  navigator.geolocation.getCurrentPosition(function(position){
- loadWeather(position.coords.latitude + ',' + position.coords.longitude);
-  });
-} else {
-  loadWeather("Buenos Aires, Argentina" , "");
-}
+jQuery(function($, undefined) {
+	// get curent location
+	var location = "Buenos Aires, Argentina";
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			location = position.coords.latitude + ',' + position.coords.longitude;
+		});
+	} 
+	
+	function loadWeather(location, woeid) {
+		$.simpleWeather({
+			location: location,
+			woeid: woeid,
+			success: function(weather) {
+				var city = weather.city;
+				$(".location").text("en " + city + ".");
 
+				var wcode = '<img class="weathericon" src="weathericons/' + weather.code + '.svg">';
+				$(".weather-icon").html(wcode);
 
-$(document).ready(function(){
-  setInterval(getWeather, 1000);
+				if (/^1|3|4|5|6|9|10|11|12|14|35|37|38|39|40|45|46|47$/.test(weather.code)) {
+					$(".text").text("Llueve")
+					$("body").addClass("show");
+				} else {
+					$(".text").text("No llueve")
+					$("body").addClass("show");
+				}
+			},
+			error: function(error) {
+				$("#weather").html('<p>' + error + '</p>');
+			}
+		});
+	}
+	
+	loadWeather(location);
+	setInterval(function() {
+		loadWeather(location);
+	}, 60000);
+
 });
-
-function loadWeather(location, woeid) {
-  $.simpleWeather({
-    location: location,
-    woeid: woeid,
-    success: function(weather) {
-    
-    city = weather.city;
-    $(".location").text("en " + city + ".");
-
-    wcode = '<img class="weathericon" src="weathericons/' + weather.code + '.svg">';
-    $(".weather-icon").html(wcode); 
-      
-  if(weather.code == 1 || weather.code == 3 || weather.code == 4 || weather.code == 5 || weather.code == 6 || weather.code == 9 || weather.code == 10 || weather.code == 11 || weather.code == 12 || weather.code == 14 || weather.code == 35 || weather.code == 37 || weather.code == 38 || weather.code == 39 || weather.code == 40 || weather.code == 45 || weather.code == 46 || weather.code == 47 ){
-    $(".text").text("Llueve")
-    $("body" ).addClass( "show" );
-  } else {
-    $(".text").text("No llueve")
-    $("body" ).addClass( "show" );
-  }
-      
-    },
-    error: function(error) {  
-        $("#weather").html('<p>'+error+'</p>');
-    }
-    
-  });
-
-}
