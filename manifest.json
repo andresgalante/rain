@@ -44,9 +44,20 @@
       "density": 5.0
     }
   ],
+  "splash_screens": [{
+      "src": "icons/android-icons/splash-lowres.png",
+      "sizes": "320x240"
+    }, {
+      "src": "icons/android-icons/splash-hdsmall.png",
+      "sizes": "1334x750"
+    }, {
+      "src": "icons/android-icons/splash-hdhi.png",
+      "sizes": "1920x1080",
+      "density": 3
+    }], 
   "start_url": "index.html",
   "display": "standalone",
-  "theme_color": "aliceblue",
+  "theme_color": "pink",
   "lang": "es_ES",
   "orientation": "any"
 }
