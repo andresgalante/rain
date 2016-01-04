@@ -11,11 +11,24 @@ $font-color: rgba(255,255,255,1);
 $font-secondary-color: rgba(255,255,255,.7);
 $font-base: 14px;
 
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+
+$easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+$easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+
+html{height: 100%;}
+
 body{
-//  margin:50px; 
   font-family: 'Open Sans', sans-serif;
   font-weight: $bold;
   background-color:$main-color;
+  background-image: linear-gradient(#00ACEF 0%, #6500DE 100%);
+//  background-size: cover;
+  height: 100%;
   color: $font-color;
   font-size: $font-base;
 }
@@ -31,13 +44,28 @@ body{
 
 .text{
   display: block;
+  transition: all 1s $easeOutQuad;
+  transform: translate3d(0, -2em, 0);
+  filter: blur(0px) opacity(0);
+  .show &{
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px) opacity(100%);
+  }
 }
 
 .location{
   color: $font-secondary-color;
+  transition: all 1s $easeOutExpo .5s;
+  filter: blur(10px) opacity(0);
+  .show &{
+    filter: blur(0px) opacity(100%);
+  }
 }
 
 .weather-icon{
-//  transition: all 2s linear;
-//  filter: invert(100%) blur(5px);
+  filter: invert(100%) blur(10px) opacity(0);
+  transition: all 2s $easeOutExpo;
+  .show & {
+    filter: invert(100%) blur(0px) opacity(100%);
+  }
 }
