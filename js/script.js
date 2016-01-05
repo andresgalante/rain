@@ -20,10 +20,10 @@ jQuery(function($, undefined) {
 
 				if (/^(1|3|4|5|6|9|10|11|12|14|35|37|38|39|40|45|46|47)$/.test(weather.code)) {
 					$(".text").text("Llueve");
-					$("body").addClass("show");
+					$("body").addClass("show rain");
 				} else {
 					$(".text").text("No llueve");
-					$("body").addClass("show");
+					$("body").addClass("show no-rain");
 				}
 				
 				setTimeout(function() {
