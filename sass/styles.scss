@@ -87,8 +87,8 @@ body{
 
 .location{
   display: block;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,.2);
+// padding-bottom: 20px;
+//  border-bottom: 1px solid rgba(255,255,255,.2);
   color: $font-secondary-color;
   transition: all 1s $easeOutExpo .5s;
   filter: blur(10px) opacity(0);
@@ -98,7 +98,7 @@ body{
 }
 
 .weather-icon{
-  margin: -10px 0 0 -20px;
+  margin: -100px 0 -10px -20px;
   filter: invert(100%) blur(10px) opacity(0);
   transition: all 2s $easeOutExpo 1s;
   .show & {
