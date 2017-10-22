@@ -1,5 +1,8 @@
+
+
 jQuery(function($, undefined) {
-	// get curent location
+
+	get curent location
 	if ("geolocation" in navigator) {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			loadWeather(position.coords.latitude + ',' + position.coords.longitude);
@@ -7,10 +10,13 @@ jQuery(function($, undefined) {
 	}else{
 		loadWeather("Buenos Aires, Argentina");
 	}
-	
+
+  // loadWeather("Buenos Aires, Argentina");
+
 	function loadWeather(location, woeid) {
 		$.simpleWeather({
 			location: location,
+			// location: 'Buenos Aires, Argentina',
 			woeid: woeid,
 			success: function(weather) {
 				$(".location").text("en " + weather.city + ".");
@@ -25,21 +31,20 @@ jQuery(function($, undefined) {
 					$(".text").text("No llueve");
 					$("body").addClass("show no-rain");
 				}
-				
+
 				setTimeout(function() {
 					loadWeather(location);
 				}, 60000);
 			},
 			error: function(error) {
 				$("#weather").html('<p>' + error + '</p>');
-				
+
 				setTimeout(function() {
 					loadWeather(location);
 				}, 60000);
 			}
 		});
-		
+
 	}
-		
 
 });
