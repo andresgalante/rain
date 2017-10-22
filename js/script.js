@@ -1,7 +1,4 @@
-
-
 jQuery(function($, undefined) {
-
 	get curent location
 	if ("geolocation" in navigator) {
 		navigator.geolocation.getCurrentPosition(function(position) {
@@ -10,8 +7,6 @@ jQuery(function($, undefined) {
 	}else{
 		loadWeather("Buenos Aires, Argentina");
 	}
-
-  // loadWeather("Buenos Aires, Argentina");
 
 	function loadWeather(location, woeid) {
 		$.simpleWeather({
