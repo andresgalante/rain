@@ -1,5 +1,5 @@
 jQuery(function($, undefined) {
-	get curent location
+	// get current location
 	if ("geolocation" in navigator) {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			loadWeather(position.coords.latitude + ',' + position.coords.longitude);
